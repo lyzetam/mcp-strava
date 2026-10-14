@@ -1,7 +1,7 @@
 # Contributing
 
 Thanks for taking the time to improve `mcp-strava`. Bug reports, fixes and new read-only tools are
-all welcome.
+all welcome. Everyone taking part is expected to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Ground rules
 
