@@ -9,6 +9,7 @@ import argparse
 import getpass
 import os
 import secrets
+import socketserver
 import sys
 import time
 import webbrowser
@@ -62,6 +63,13 @@ def parse_callback(query: str, expected_state: str) -> tuple[str, str]:
 class _CallbackHTTPServer(HTTPServer):
     expected_state = ""
     result: tuple[str, str] | AuthError | None = None
+
+    def server_bind(self) -> None:
+        # HTTPServer.server_bind reverse-resolves the bind address only to fill in server_name, and that
+        # lookup can stall for 30 s or more on some networks. Nothing here uses the name.
+        socketserver.TCPServer.server_bind(self)
+        self.server_name = "localhost"
+        self.server_port = self.socket.getsockname()[1]
 
 
 class _CallbackHandler(BaseHTTPRequestHandler):

@@ -291,3 +291,15 @@ def test_ask_terminal_treats_end_of_input_as_no_answer(monkeypatch):
 
     assert ask_terminal("Strava Client ID", secret=False) == ""
     assert ask_terminal("Strava Client Secret", secret=True) == ""
+
+
+def test_callback_server_starts_without_a_reverse_dns_lookup(monkeypatch):
+    # http.server looks up a hostname for the bind address, which can stall for 30 s or more on some
+    # networks (seen on GitHub's macOS runners). The listener never uses that name.
+    def no_dns(name: str = "") -> str:
+        raise AssertionError(f"reverse DNS lookup of {name!r}")
+
+    monkeypatch.setattr(socket, "getfqdn", no_dns)
+
+    with CallbackServer(port=0) as server:
+        assert server.port > 0
