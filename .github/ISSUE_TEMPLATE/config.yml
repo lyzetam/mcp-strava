@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/lyzetam/mcp-strava/security/advisories/new
+    about: Please report security problems privately.
+  - name: Strava API status and documentation
+    url: https://developers.strava.com/docs/
+    about: Questions about Strava's API itself rather than this server.

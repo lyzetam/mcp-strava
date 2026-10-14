@@ -1,0 +1,22 @@
+name: Feature request
+description: Suggest a new read-only tool or an improvement
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What do you want to ask your assistant that it cannot answer today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: The Strava API endpoint involved, if you know it.
+  - type: checkboxes
+    id: read-only
+    attributes:
+      label: Scope
+      options:
+        - label: This only needs to read Strava data, not change it.
+          required: true

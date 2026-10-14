@@ -1,0 +1,45 @@
+name: Bug report
+description: Something does not work as documented
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please remove tokens, client secrets and personal activity data from
+        anything you paste. For a security problem, use the private report link instead of this form.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Run `mcp-strava auth`
+        2. Ask Claude "..."
+        3. See error "..."
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: mcp-strava version
+      description: Output of `mcp-strava --version`
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: macOS 15, Python 3.12, Claude Desktop 1.x
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or error output
+      render: text
